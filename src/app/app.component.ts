@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   url = '';
   uploadNewImage = false;
 
+
   ngOnInit() {
 
   }
@@ -27,6 +28,11 @@ export class AppComponent implements OnInit {
       reader.onload = (event:any) => { // called once readAsDataURL is completed
         this.url = event.target.result;
       }
+      this.canvas = new fabric.Canvas('canvas');
+      fabric.Image.fromURL(this.url, (img) => {
+        this.canvas.add(img);
+        console.log(this.url);
+      });
     }
   }
 
